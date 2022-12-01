@@ -17,7 +17,7 @@ class TaskController extends Controller
     public function index()
     {
         return Inertia::render('Tasks/Hello', [
-            'createdTasks' => Task::with('user:id')     ->latest()->get()
+            'createdTasks' => Task::select('task', 'created_at', 'updated_at', 'id')->with('user:id')->latest()->get()
         ]);
     }
 
@@ -43,7 +43,7 @@ class TaskController extends Controller
             'task' => 'required|string'
         ]);
         $request->user()->tasks()->create($validated);
-        return response('', 201);
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -77,7 +77,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->update();
     }
 
     /**
@@ -88,6 +88,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect(route('tasks.index'));
     }
 }
