@@ -5,7 +5,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Models\Task;
+use App\Http\Controllers\NotificationController;
+use App\Schedules\NotificationSender;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,12 @@ Route::resource('tasks', TaskController::class)
     ->middleware(['auth']);
 
 Route::post('/tasks/{task}/toggle', [TaskController::class, 'toggle'])->middleware(['auth'])->name('tasks.toggle');
+Route::post('/subscribe-notifications', [NotificationController::class, 'store'])
+    ->middleware(['auth'])->name('notifications.subscribe');
+
+Route::get('/subscribe-send', function () {
+    $r = new NotificationSender();
+    $r->invoke();
+});
 
 require __DIR__.'/auth.php';

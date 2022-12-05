@@ -5,7 +5,7 @@ console.log(import.meta.env)
 
 const subscribeOptions = {
     userVisibleOnly: true,
-    applicationServerKey: import.meta.env['NOTIFICATION_PUBLIC_KEY']
+    applicationServerKey: import.meta.env['VITE_NOTIFICATION_PUBLIC_KEY']
 }
 
 export const useSubscribe = () => {
@@ -23,6 +23,7 @@ export const useSubscribe = () => {
     const registerWorker = useCallback((notificationResult) => {
         navigator.serviceWorker
             .register('/worker.js')
+            .then(navigator.serviceWorker.ready)
             .then(f => subscribeToPush(f, notificationResult))
             .then(sendToServer)
         if (!notificationResult) return

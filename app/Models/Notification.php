@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
     use HasFactory;
+    protected $guarded = [
+        'id',
+        'user_id'
+    ];
 }

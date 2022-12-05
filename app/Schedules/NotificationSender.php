@@ -1,13 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use App\Models\Task;
+namespace App\Schedules;
+
 use App\Models\Notification;
+use App\Models\User;
+use ErrorException;
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
+use Illuminate\Support\Facades\Log;
 
 class NotificationSender {
     private WebPush $push;
 
-    public function __constructor() {
+    public function __construct() {
         $this->push = new WebPush([
             'VAPID' => [
                 'subject' => env('APP_URL'),
@@ -20,19 +25,26 @@ class NotificationSender {
         ]);
     }
 
-    public function run() {
-        // TODO: Query notifications first
-        $tasks = Task::where('scheduled_at', '>=', now())->where('completed_at', null)->get();
-        foreach ($tasks as $task) {
-            $notification = $task->user()->notification();
-            if (!$notification) continue;
-            $push->queueNotification($notification->endpoint, [
-                "msg_up" => "Przypomnienie",
-                "msg_down" => "Zadanie {$task->$task} zostalo rozpoczete",
-                "timestamp" => $task->scheduled_at->getTimestamp()
+    public function invoke() {
+        $notifications = Notification::all();
+        foreach ($notifications as $notification) {
+            $subscription = Subscription::create([
+                'endpoint' => $notification->endpoint,
+                'publicKey' => env("NOTIFICATION_PUBLIC_KEY"),
+                'authToken' => $notification->auth
             ]);
+            $users = $notification->belongsTo(User::class, 'user_id')->get();
+            foreach ($users as $user) {
+                foreach ($user->tasks()->get() as $task) {
+                    $this->push->queueNotification($subscription, json_encode([
+                        "msg_up" => "Przypomnienie",
+                        "msg_down" => "Zadanie {$task->$task} zostalo rozpoczete",
+                        "timestamp" => $task->scheduled_at
+                    ]));
+                }
+            }
+            $this->push->flush();
         }
-        $push->flush();
     }
 }
 ?>

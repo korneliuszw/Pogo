@@ -37,14 +37,16 @@ class NotificationController extends Controller
     {
         $validated = $request->validate([
             'endpoint' => 'string|required|url',
-            'keys.p256dh' => 'string|required|size:88',
-            'keys.auth' => 'string|required|size:24'
+            'keys.p256dh' => 'string|required|size:87',
+            'keys.auth' => 'string|required|size:22'
         ]);
 
+        \Debugbar::info($validated);
+
         $request->user()->notifications()->create([
-            'endpoint' => $validated->endpoint,
-            'p256dh' => $validated['keys.p256dh'],
-            'auth' => $validated['keys.auth']
+            'endpoint' => $validated['endpoint'],
+            'p256dh' => $validated['keys']['p256dh'],
+            'auth' => $validated['keys']['auth']
         ]);
     }
 
