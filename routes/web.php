@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('tasks', TaskController::class)
-    ->only(['index', 'store', 'destroy', 'edit'])
+    ->only(['index', 'store', 'destroy', 'update'])
     ->middleware(['auth']);
 
+Route::post('/tasks/{task}/toggle', [TaskController::class, 'toggle'])->middleware(['auth'])->name('tasks.toggle');
 
 require __DIR__.'/auth.php';

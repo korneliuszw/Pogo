@@ -6,6 +6,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -14,10 +15,24 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $showCompleted = $request->query('showCompleted', false);
+        $tasks = Task::select('task', 'created_at', 'updated_at', 'id', 'scheduled_at', 'completed_at')
+            ->with('user:id');
+        // get database type
+        $connection = config('database.default');
+        $driver = config("database.connections.{$connection}.driver");
+        // sqlite handles date diff differently
+        if ($driver == 'sqlite')
+            $tasks = $tasks->orderBy(DB::raw("JULIANDAY(tasks.scheduled_at) - JULIANDAY(datetime('now'))"), "ASC");
+        else
+            $tasks = $tasks->orderBy(DB::raw("DATEDIFF(tasks.scheduled_at, now())"));
+        if (!$showCompleted) {
+            $tasks = $tasks->incomplete();
+        }
         return Inertia::render('Tasks/Hello', [
-            'createdTasks' => Task::select('task', 'created_at', 'updated_at', 'id')->with('user:id')->latest()->get()
+            'createdTasks' => $tasks->get()
         ]);
     }
 
@@ -40,7 +55,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'task' => 'required|string'
+            'task' => 'required|string',
+            'scheduled_at' => 'required|date'
         ]);
         $request->user()->tasks()->create($validated);
         return redirect(route('tasks.index'));
@@ -77,7 +93,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->update();
+        $validated = $request->validate([
+            'task' => 'required|string',
+            'scheduled_at' => 'required|date'
+        ]);
+        dd($task);
+        $task->update($validated);
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -90,5 +112,9 @@ class TaskController extends Controller
     {
         $task->delete();
         return redirect(route('tasks.index'));
+    }
+    public function toggle(Task $task)
+    {
+        $task->update(['completed_at' => $task->isCompleted() ? null: now()]); 
     }
 }

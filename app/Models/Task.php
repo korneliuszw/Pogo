@@ -8,11 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'task'
+
+    protected $guarded = [
+        'id',
+        'user_id'
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+    public function isCompleted(): bool {
+        return $this->getAttribute('completed_at') != null;
+    }
+    public function scopeIncomplete($query) {
+        return $query->whereNull('completed_at');
     }
 }
