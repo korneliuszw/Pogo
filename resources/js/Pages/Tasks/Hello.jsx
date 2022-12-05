@@ -13,6 +13,7 @@ import ReactDatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css'
 import { Inertia } from '@inertiajs/inertia';
+import { useSubscribe } from './Subscribe';
 
 dayjs.locale('pl')
 
@@ -62,11 +63,14 @@ export default function Hello({auth, createdTasks}) {
         }
     }, [editing])
 
+    const { askPermission } = useSubscribe()
+
     return (
         <AuthenticatedLayout auth={auth} header=
         {<>
             <Checkbox name="toggle-completed" value={showCompleted} handleChange={toggleCompleted}/>
             <Button onClick={() => setIsEditing(true)}>Dodaj</Button>
+            <Button onClick={askPermission}>Wlacz powiadomienia</Button>
         </>
         }>
             <Modal closeable onClose={() => setIsEditing(false)} show={editing !== false}>
