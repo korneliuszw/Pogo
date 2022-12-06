@@ -46,9 +46,9 @@ Route::post('/tasks/{task}/toggle', [TaskController::class, 'toggle'])->middlewa
 Route::post('/subscribe-notifications', [NotificationController::class, 'store'])
     ->middleware(['auth'])->name('notifications.subscribe');
 
-Route::get('/subscribe-send', function () {
-    $r = new NotificationSender();
-    $r->invoke();
-});
+// Route::get('/subscribe-send', function () {
+//     $r = new NotificationSender();
+//     $r->invoke();
+// });
 
 require __DIR__.'/auth.php';
