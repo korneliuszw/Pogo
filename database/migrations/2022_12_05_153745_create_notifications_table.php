@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string("p256dh");
             $table->timestamps();
         });
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->boolean("notification_sent")->default(false);
+        });
     }
 
     /**
