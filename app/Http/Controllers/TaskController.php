@@ -93,11 +93,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        $this->authorize('update', $task);
         $validated = $request->validate([
             'task' => 'required|string',
             'scheduled_at' => 'required|date'
         ]);
-        dd($task);
         $task->update($validated);
         return redirect(route('tasks.index'));
     }
@@ -110,11 +110,13 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        $this->authorize('delete', $task);
         $task->delete();
         return redirect(route('tasks.index'));
     }
     public function toggle(Task $task)
     {
+        $this->authorize('update', $task);
         $task->update(['completed_at' => $task->isCompleted() ? null: now()]); 
     }
 }
