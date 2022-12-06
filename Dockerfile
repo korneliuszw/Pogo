@@ -33,6 +33,7 @@ RUN php artisan route:clear && php artisan config:clear && php artisan cache:cle
 RUN rm -rf storage/logs/*
 RUN php artisan config:cache
 RUN php artisan route:cache
+RUN php artisan migrate
 
 RUN chown -R www-data:www-data /var/www/ && \
     chmod 777 -R /var/www/html/storage && \
