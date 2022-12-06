@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             $table->dateTime('completed_at')->nullable();
-            $table->dateTime('scheduled_at');
+            $table->dateTime('scheduled_at')->useCurrent();
         });
     }
 
