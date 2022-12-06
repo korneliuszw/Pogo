@@ -6,3 +6,13 @@ public/build
 storage
 public/hot
 public/storage
+npm-debug.log
+yarn-error.log
+bootstrap/compiled.php
+app/storage/
+storage/*.key
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+logs/

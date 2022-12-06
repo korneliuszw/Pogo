@@ -9,6 +9,12 @@ FROM composer:2.4.4 as build
 WORKDIR /app
 COPY . /app/
 RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
+RUN mkdir -p storage/framework/{sessions,views,cache}
+
+RUN php artisan cache:clear && php artisan config:clear && php artisan view:clear
+
+RUN php artisan config:cache
+RUN php artisan route:cache
 
 FROM php:8.1-apache-buster as production
 
@@ -26,8 +32,6 @@ COPY --from=build /app /var/www/html
 COPY --from=frontend /app/public/build /var/www/html/public/build
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN php artisan config:cache
-RUN php artisan route:cache
 
 RUN chown -R www-data:www-data /var/www/ && \
     a2enmod rewrite
