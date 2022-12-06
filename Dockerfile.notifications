@@ -1,3 +1,5 @@
-FROM php:8.0-apache-buster as production
-WORKDIR /var/www/html
-RUN php artisan schedule:work
+FROM composer:2.4.4 as production
+WORKDIR /app
+COPY . /app/
+RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
+CMD php artisan schedule:work
