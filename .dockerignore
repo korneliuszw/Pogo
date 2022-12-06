@@ -3,4 +3,3 @@ node_modules
 public/build
 docker-compose.yaml
 public/hot
-public/storage
