@@ -1,8 +1,7 @@
-node_modules
-database.sqlite
 vendor
-*.pem
+node_modules
 public/build
+docker-compose.yaml
 storage
 public/hot
 public/storage

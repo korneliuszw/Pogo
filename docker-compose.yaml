@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: pogo
+      POSTGRES_DB: pogo
+      POSTGRES_PASSWORD: pogo32425325324252
+  web:
+    build:
+      context: ./
+    volumes:
+      - app:/var/www/html
+      - ./logs:/var/log/apache2
+    ports:
+      - "8085:80"
+    environment:
+      - APP_DEBUG=true
+      - APP_URL
+      - DATABASE_URL
+      - APP_KEY
+      - NOTIFICATION_PUBLIC_KEY
+      - NOTIFICATION_PRIVATE_KEY
+      - VITE_NOTIFICATION_PUBLIC_KEY
+  # notifications:
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile.notifications
+  #   volumes:
+  #     - app:/var/www/html
+  #   depends_on:
+  #     - web
+volumes:
+  app:
+  database:

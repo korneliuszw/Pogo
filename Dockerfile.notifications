@@ -1,0 +1,3 @@
+FROM php:8.0-apache-buster as production
+WORKDIR /var/www/html
+RUN php artisan schedule:work

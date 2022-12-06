@@ -1,0 +1,63 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:16:56.378058 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:16:56.378154 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:17:10.070125 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:60412] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:17:10.070403 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:60412] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:17:10.071009 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:60412] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:17:10.071092 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:60412] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:18:27.999985 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 127.0.0.1:46242] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:18:28.000288 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 127.0.0.1:46242] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:18:28.000639 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 127.0.0.1:46242] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:18:28.000720 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 127.0.0.1:46242] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:20:42.870129 2022] [authz_core:debug] [pid 19] mod_authz_core.c(820): [client 172.19.0.1:55966] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:20:42.872289 2022] [authz_core:debug] [pid 19] mod_authz_core.c(820): [client 172.19.0.1:55966] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:20:42.876699 2022] [authz_core:debug] [pid 19] mod_authz_core.c(820): [client 172.19.0.1:55966] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:20:42.876904 2022] [authz_core:debug] [pid 19] mod_authz_core.c(820): [client 172.19.0.1:55966] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:25:51.486544 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.2. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:25:57.453389 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:25:57.453532 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:25:58.015042 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:27:49.011956 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:27:49.012179 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:27:53.452205 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:35038] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:27:53.452442 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:35038] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:27:53.452977 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:35038] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:27:53.453086 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:35038] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:29:02.211319 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:40216] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:29:02.211610 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:40216] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:29:05.752791 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:40216] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:29:05.753039 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:40216] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:29:25.816915 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:30:24.041180 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:30:24.041418 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:30:25.338407 2022] [authz_core:debug] [pid 16] mod_authz_core.c(820): [client 172.19.0.1:48232] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:30:25.338581 2022] [authz_core:debug] [pid 16] mod_authz_core.c(820): [client 172.19.0.1:48232] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:30:26.416627 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:48246] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:30:26.417141 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:48246] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:31:18.506906 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.2. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:34:24.283373 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:34:24.283688 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:34:38.223097 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:50930] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:34:38.223412 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:50930] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:34:39.168710 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:50930] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:34:39.169010 2022] [authz_core:debug] [pid 18] mod_authz_core.c(820): [client 172.19.0.1:50930] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:39:40.469218 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:40:37.797306 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:40:37.797747 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:40:42.791469 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:52522] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:40:42.791800 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:52522] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:40:44.015149 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:52522] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:40:44.015413 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:52522] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:40:44.943882 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:52522] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:40:44.944065 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:52522] AH01626: authorization result of <RequireAny>: granted
+[Tue Dec 06 19:40:50.454734 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Dec 06 19:43:43.224560 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.1.13 configured -- resuming normal operations
+[Tue Dec 06 19:43:43.224770 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Dec 06 19:43:55.369981 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:40668] AH01626: authorization result of Require all granted: granted
+[Tue Dec 06 19:43:55.370171 2022] [authz_core:debug] [pid 17] mod_authz_core.c(820): [client 172.19.0.1:40668] AH01626: authorization result of <RequireAny>: granted
