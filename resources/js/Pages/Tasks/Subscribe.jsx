@@ -39,17 +39,13 @@ export const useSubscribe = () => {
     const registerWorker = useCallback((notificationResult) => {
         navigator.serviceWorker
             .register('/worker.js')
-            .then(navigator.serviceWorker.ready)
+            .then(() => navigator.serviceWorker.ready)
             .then(f => subscribeToPush(f, notificationResult))
             .then(sendToServer)
+            .catch(console.error)
         if (!notificationResult) return
     }, [sendToServer, subscribeToPush])
-
-    const askPermission = useCallback(() => {
-        Notification.requestPermission().then(registerWorker)
-    }, [registerWorker])
-
     return {
-        askPermission
+        askPermission: registerWorker
     }
 }
