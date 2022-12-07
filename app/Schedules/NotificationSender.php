@@ -27,6 +27,8 @@ class NotificationSender {
             'urgency' => 'high',
             'batchSize' => $this->maxBatchSize
         ]);
+        // firefox mobile supports up to 2048 bytes per payload
+        $this->push->setAutomaticPadding(2048);
     }
     private function flush() {
         foreach ($this->push->flush() as $p) {
