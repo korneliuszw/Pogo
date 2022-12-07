@@ -27,7 +27,7 @@ class TaskController extends Controller
         if ($driver == 'sqlite')
             $tasks = $tasks->orderBy(DB::raw("JULIANDAY(tasks.scheduled_at) - JULIANDAY(datetime('now'))"), "ASC");
         else
-            $tasks = $tasks->orderBy(DB::raw("DATEDIFF(tasks.scheduled_at, now())"));
+            $tasks = $tasks->orderBy(DB::raw("tasks.scheduled_at - CURRENT_TIMESTAMP"));
         if (!$showCompleted) {
             $tasks = $tasks->incomplete();
         }
