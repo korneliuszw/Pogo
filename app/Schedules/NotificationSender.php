@@ -29,7 +29,6 @@ class NotificationSender {
     public function invoke() {
         $notifications = Notification::all();
         foreach ($notifications as $notification) {
-            dump($notification);
             $subscription = Subscription::create([
                 'endpoint' => $notification->endpoint,
                 'contentEncoding' => 'aesgcm',
@@ -42,9 +41,7 @@ class NotificationSender {
             ]);
             $users = $notification->belongsTo(User::class, 'user_id')->get();
             foreach ($users as $user) {
-                dump($user);
-                foreach ($user->tasks()->incomplete()->where('scheduled_at', '<=', "datetime('now')")->where('notification_sent', false)->get() as $task) {
-                    dump($task);
+                foreach ($user->tasks()->incomplete()->where('scheduled_at', '<=', 'CURRENT_TIMESTAMP')->where('notification_sent', false)->get() as $task) {
                     $task_short = substr($task->task, 0, 50);
                     $this->push->queueNotification($subscription, json_encode([
                         "msg_up" => "Przypomnienie",
