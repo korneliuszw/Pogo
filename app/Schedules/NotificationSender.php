@@ -41,7 +41,7 @@ class NotificationSender {
             ]);
             $users = $notification->belongsTo(User::class, 'user_id')->get();
             foreach ($users as $user) {
-                foreach ($user->tasks()->incomplete()->where('scheduled_at', '<=', 'CURRENT_TIMESTAMP')->where('notification_sent', false)->get() as $task) {
+                foreach ($user->tasks()->incomplete()->whereRaw('scheduled_at <= CURRENT_TIMESTAMP')->where('notification_sent', false)->get() as $task) {
                     $task_short = substr($task->task, 0, 50);
                     $this->push->queueNotification($subscription, json_encode([
                         "msg_up" => "Przypomnienie",
