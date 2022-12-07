@@ -31,7 +31,7 @@ class TaskController extends Controller
         if (!$showCompleted) {
             $tasks = $tasks->incomplete();
         }
-        return Inertia::render('Tasks/Hello', [
+        return Inertia::render('Tasks/TaskList', [
             'createdTasks' => $tasks->get()
         ]);
     }

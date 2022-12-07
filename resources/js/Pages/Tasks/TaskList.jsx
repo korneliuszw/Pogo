@@ -17,7 +17,7 @@ import { useSubscribe } from './Subscribe';
 
 dayjs.locale('pl')
 
-export default function Hello({auth, createdTasks}) {
+export default function TaskList({auth, createdTasks}) {
     const [editing, setIsEditing] = useState(false)
     const { reset, post, setData, patch} = useForm({ task: '' })
     const onSuccess = useCallback(() => {
@@ -67,11 +67,14 @@ export default function Hello({auth, createdTasks}) {
 
     return (
         <AuthenticatedLayout auth={auth} header=
-        {<>
-            <Checkbox name="toggle-completed" value={showCompleted} handleChange={toggleCompleted}/>
+        {<div className='flex gap-5'>
+            <div className='flex gap-2 self-center items-center justify-center'>
+                <InputLabel>Pokaz wykonane</InputLabel>
+                <Checkbox name="toggle-completed" value={showCompleted} handleChange={toggleCompleted}/>
+            </div>
             <Button onClick={() => setIsEditing(true)}>Dodaj</Button>
             <Button onClick={askPermission}>Wlacz powiadomienia</Button>
-        </>
+        </div>
         }>
             <Modal closeable onClose={() => setIsEditing(false)} show={editing !== false}>
                 <form onSubmit={updateForm} className="flex flex-col gap-3 p-10">
