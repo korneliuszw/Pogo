@@ -40,6 +40,7 @@ class NotificationSender {
             ->join('tasks', 'notifications.user_id', '=', 'tasks.user_id')
             ->whereRaw('tasks.scheduled_at <= CURRENT_TIMESTAMP')
             ->where('notification_sent' ,false)
+            ->whereNull('completed_at')
             ->select('tasks.id', 'tasks.task', 'notifications.endpoint',
                 'notifications.p256dh', 'notifications.auth', 'tasks.scheduled_at')
             ->get();
