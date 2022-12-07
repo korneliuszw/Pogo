@@ -57,11 +57,7 @@ class NotificationSender {
                 ]
             ]);
             $task_short = substr($notification->task, 0, 50);
-            $this->push->queueNotification($subscription, json_encode([
-                "msg_up" => "Przypomnienie",
-                "msg_down" => "Zadanie $task_short zostalo rozpoczete",
-                "timestamp" => $notification->scheduled_at
-            ]));
+            $this->push->queueNotification($subscription, $task_short);
             DB::table('tasks')
                 ->where('id', $notification->id)
                 ->update(['notification_sent' => true]);
