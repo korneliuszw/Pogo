@@ -20,7 +20,6 @@ class TaskController extends Controller
         $showCompleted = $request->query('showCompleted', false);
         $tasks = $request->user()->tasks()->select('task', 'created_at', 'updated_at', 'id', 'scheduled_at', 'completed_at')
             ->with('user');
-        \Debugbar::info('test');
         // get database type
         $connection = config('database.default');
         $driver = config("database.connections.{$connection}.driver");
