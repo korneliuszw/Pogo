@@ -18,8 +18,9 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $showCompleted = $request->query('showCompleted', false);
-        $tasks = Task::select('task', 'created_at', 'updated_at', 'id', 'scheduled_at', 'completed_at')
-            ->with('user:id');
+        $tasks = $request->user()->tasks()->select('task', 'created_at', 'updated_at', 'id', 'scheduled_at', 'completed_at')
+            ->with('user');
+        \Debugbar::info('test');
         // get database type
         $connection = config('database.default');
         $driver = config("database.connections.{$connection}.driver");
